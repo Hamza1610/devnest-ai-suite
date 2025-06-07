@@ -14,14 +14,21 @@ const Navbar = () => {
     { name: 'Skills', href: '#skills' },
     { name: 'Experience', href: '#experience' },
     { name: 'Contact', href: '#contact' },
+    { name: 'Blog', href: '/blog', isRoute: true },
   ];
 
   const handleWorkspaceClick = () => {
     navigate('/workspace');
   };
 
-  const handleNavigation = (href: string) => {
-    if (href.startsWith('#')) {
+  const handleAdminClick = () => {
+    navigate('/admin');
+  };
+
+  const handleNavigation = (href: string, isRoute?: boolean) => {
+    if (isRoute) {
+      navigate(href);
+    } else if (href.startsWith('#')) {
       // If we're not on the home page, navigate there first
       if (window.location.pathname !== '/') {
         navigate('/');
@@ -52,7 +59,7 @@ const Navbar = () => {
               {navItems.map((item) => (
                 <button
                   key={item.name}
-                  onClick={() => handleNavigation(item.href)}
+                  onClick={() => handleNavigation(item.href, item.isRoute)}
                   className="text-foreground hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
                 >
                   {item.name}
@@ -61,13 +68,21 @@ const Navbar = () => {
             </div>
           </div>
           
-          <div className="hidden md:block">
+          <div className="hidden md:flex items-center space-x-2">
             <Button 
               variant="outline" 
+              size="sm"
               className="border-primary text-primary hover:bg-primary hover:text-background"
               onClick={handleWorkspaceClick}
             >
               AI Workspace
+            </Button>
+            <Button 
+              variant="ghost" 
+              size="sm"
+              onClick={handleAdminClick}
+            >
+              Admin
             </Button>
           </div>
 
@@ -90,19 +105,28 @@ const Navbar = () => {
             {navItems.map((item) => (
               <button
                 key={item.name}
-                onClick={() => handleNavigation(item.href)}
+                onClick={() => handleNavigation(item.href, item.isRoute)}
                 className="text-foreground hover:text-primary block px-3 py-2 rounded-md text-base font-medium w-full text-left"
               >
                 {item.name}
               </button>
             ))}
-            <Button 
-              variant="outline" 
-              className="w-full mt-4 border-primary text-primary hover:bg-primary hover:text-background"
-              onClick={handleWorkspaceClick}
-            >
-              AI Workspace
-            </Button>
+            <div className="pt-2 space-y-2">
+              <Button 
+                variant="outline" 
+                className="w-full border-primary text-primary hover:bg-primary hover:text-background"
+                onClick={handleWorkspaceClick}
+              >
+                AI Workspace
+              </Button>
+              <Button 
+                variant="ghost" 
+                className="w-full"
+                onClick={handleAdminClick}
+              >
+                Admin
+              </Button>
+            </div>
           </div>
         </div>
       )}
