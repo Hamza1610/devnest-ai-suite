@@ -1,9 +1,11 @@
 
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const navItems = [
     { name: 'Home', href: '#home' },
@@ -14,30 +16,57 @@ const Navbar = () => {
     { name: 'Contact', href: '#contact' },
   ];
 
+  const handleWorkspaceClick = () => {
+    navigate('/workspace');
+  };
+
+  const handleNavigation = (href: string) => {
+    if (href.startsWith('#')) {
+      // If we're not on the home page, navigate there first
+      if (window.location.pathname !== '/') {
+        navigate('/');
+        // Wait for navigation to complete before scrolling
+        setTimeout(() => {
+          const element = document.querySelector(href);
+          element?.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      } else {
+        // If we're on the home page, just scroll
+        const element = document.querySelector(href);
+        element?.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+    setIsMenuOpen(false);
+  };
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 glass-effect">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <div className="flex-shrink-0">
+          <div className="flex-shrink-0 cursor-pointer" onClick={() => navigate('/')}>
             <h1 className="text-xl font-bold text-gradient">DevNest</h1>
           </div>
           
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
               {navItems.map((item) => (
-                <a
+                <button
                   key={item.name}
-                  href={item.href}
+                  onClick={() => handleNavigation(item.href)}
                   className="text-foreground hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
                 >
                   {item.name}
-                </a>
+                </button>
               ))}
             </div>
           </div>
           
           <div className="hidden md:block">
-            <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-background">
+            <Button 
+              variant="outline" 
+              className="border-primary text-primary hover:bg-primary hover:text-background"
+              onClick={handleWorkspaceClick}
+            >
               AI Workspace
             </Button>
           </div>
@@ -59,16 +88,19 @@ const Navbar = () => {
         <div className="md:hidden glass-effect">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navItems.map((item) => (
-              <a
+              <button
                 key={item.name}
-                href={item.href}
-                className="text-foreground hover:text-primary block px-3 py-2 rounded-md text-base font-medium"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={() => handleNavigation(item.href)}
+                className="text-foreground hover:text-primary block px-3 py-2 rounded-md text-base font-medium w-full text-left"
               >
                 {item.name}
-              </a>
+              </button>
             ))}
-            <Button variant="outline" className="w-full mt-4 border-primary text-primary hover:bg-primary hover:text-background">
+            <Button 
+              variant="outline" 
+              className="w-full mt-4 border-primary text-primary hover:bg-primary hover:text-background"
+              onClick={handleWorkspaceClick}
+            >
               AI Workspace
             </Button>
           </div>
