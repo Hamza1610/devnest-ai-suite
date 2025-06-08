@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -20,6 +19,7 @@ const CoverLetterBuilder = () => {
   const [isGenerating, setIsGenerating] = useState(false);
   const { toast } = useToast();
 
+  // Function to generate personalized cover letter when generate button is clicked
   const handleGenerate = async () => {
     if (!formData.roleTitle || !formData.targetCompany) {
       toast({
@@ -32,7 +32,8 @@ const CoverLetterBuilder = () => {
 
     setIsGenerating(true);
     
-    // Simulate AI generation
+    // TODO: Integrate with Gemini AI API to generate compelling, personalized cover letter
+    // The API should analyze job requirements and create tailored content that highlights relevant experience
     setTimeout(() => {
       const sampleCoverLetter = `[Your Name]
 [Your Address]
@@ -80,6 +81,7 @@ This cover letter is personalized for the ${formData.roleTitle} position at ${fo
     }, 3000);
   };
 
+  // Function to copy generated cover letter to clipboard when copy button is clicked
   const handleCopy = () => {
     navigator.clipboard.writeText(generatedCoverLetter);
     toast({
@@ -88,6 +90,7 @@ This cover letter is personalized for the ${formData.roleTitle} position at ${fo
     });
   };
 
+  // Function to download cover letter as text file when download button is clicked
   const handleDownload = () => {
     const element = document.createElement('a');
     const file = new Blob([generatedCoverLetter], { type: 'text/plain' });

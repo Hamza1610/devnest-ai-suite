@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -19,6 +18,7 @@ const ResumeBuilder = () => {
   const [isGenerating, setIsGenerating] = useState(false);
   const { toast } = useToast();
 
+  // Function to generate ATS-optimized resume tailored to specific role when generate button is clicked
   const handleGenerate = async () => {
     if (!formData.roleTitle || !formData.targetCompany) {
       toast({
@@ -31,7 +31,8 @@ const ResumeBuilder = () => {
 
     setIsGenerating(true);
     
-    // Simulate AI generation
+    // TODO: Integrate with Gemini AI API to generate tailored resume content
+    // The API should analyze job description and create ATS-friendly resume format
     setTimeout(() => {
       const sampleResume = `[Your Name]
 [Your Email] | [Your Phone] | [Your Location]
@@ -76,6 +77,7 @@ This resume is tailored for the ${formData.roleTitle} position and optimized for
     }, 3000);
   };
 
+  // Function to copy generated resume content to clipboard when copy button is clicked
   const handleCopy = () => {
     navigator.clipboard.writeText(generatedResume);
     toast({
@@ -84,6 +86,7 @@ This resume is tailored for the ${formData.roleTitle} position and optimized for
     });
   };
 
+  // Function to download resume as text file when download button is clicked
   const handleDownload = () => {
     const element = document.createElement('a');
     const file = new Blob([generatedResume], { type: 'text/plain' });

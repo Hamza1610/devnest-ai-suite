@@ -4,6 +4,16 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 
 const Projects = () => {
+  // Function to open live demo in new tab when demo button is clicked
+  const handleLiveDemo = (url: string) => {
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
+  // Function to open GitHub repository in new tab when view code button is clicked
+  const handleViewCode = (url: string) => {
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
   const projects = [
     {
       id: 1,
@@ -11,8 +21,8 @@ const Projects = () => {
       description: "Smart task management app with AI-driven priority suggestions and automated scheduling. Built with Next.js and OpenAI API.",
       image: "/placeholder.svg",
       technologies: ["Next.js", "TypeScript", "OpenAI API", "Prisma", "PostgreSQL"],
-      liveUrl: "#",
-      githubUrl: "#",
+      liveUrl: "https://task-manager-demo.com",
+      githubUrl: "https://github.com/alexchen/ai-task-manager",
       featured: true
     },
     {
@@ -21,8 +31,8 @@ const Projects = () => {
       description: "Full-stack e-commerce solution with payment integration, inventory management, and real-time analytics dashboard.",
       image: "/placeholder.svg",
       technologies: ["React", "Node.js", "MongoDB", "Stripe", "Socket.io"],
-      liveUrl: "#",
-      githubUrl: "#",
+      liveUrl: "https://ecommerce-demo.com",
+      githubUrl: "https://github.com/alexchen/ecommerce-platform",
       featured: true
     },
     {
@@ -31,8 +41,8 @@ const Projects = () => {
       description: "Dashboard for analyzing social media performance across multiple platforms with automated reporting.",
       image: "/placeholder.svg",
       technologies: ["Vue.js", "Python", "FastAPI", "Redis", "Chart.js"],
-      liveUrl: "#",
-      githubUrl: "#",
+      liveUrl: "https://analytics-demo.com",
+      githubUrl: "https://github.com/alexchen/social-analytics",
       featured: false
     },
     {
@@ -41,8 +51,8 @@ const Projects = () => {
       description: "Beautiful weather app with 7-day forecasts, interactive maps, and location-based recommendations.",
       image: "/placeholder.svg",
       technologies: ["React Native", "Expo", "Weather API", "Maps SDK"],
-      liveUrl: "#",
-      githubUrl: "#",
+      liveUrl: "https://weather-demo.com",
+      githubUrl: "https://github.com/alexchen/weather-app",
       featured: false
     },
     {
@@ -51,8 +61,8 @@ const Projects = () => {
       description: "Organize and share code snippets with syntax highlighting, tagging, and collaborative features.",
       image: "/placeholder.svg",
       technologies: ["Svelte", "Supabase", "Prism.js", "Tailwind CSS"],
-      liveUrl: "#",
-      githubUrl: "#",
+      liveUrl: "https://snippets-demo.com",
+      githubUrl: "https://github.com/alexchen/code-snippets",
       featured: false
     },
     {
@@ -61,8 +71,8 @@ const Projects = () => {
       description: "RESTful API for fitness tracking with user authentication, workout logging, and progress analytics.",
       image: "/placeholder.svg",
       technologies: ["Express.js", "JWT", "MySQL", "Docker", "AWS"],
-      liveUrl: "#",
-      githubUrl: "#",
+      liveUrl: "https://fitness-api-demo.com",
+      githubUrl: "https://github.com/alexchen/fitness-api",
       featured: false
     }
   ];
@@ -108,10 +118,19 @@ const Projects = () => {
                 </div>
                 
                 <div className="flex flex-col sm:flex-row gap-2 md:gap-3 pt-2">
-                  <Button size="sm" className="bg-primary hover:bg-primary/90 text-sm">
+                  <Button 
+                    size="sm" 
+                    className="bg-primary hover:bg-primary/90 text-sm"
+                    onClick={() => handleLiveDemo(project.liveUrl)}
+                  >
                     Live Demo
                   </Button>
-                  <Button size="sm" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white text-sm">
+                  <Button 
+                    size="sm" 
+                    variant="outline" 
+                    className="border-primary text-primary hover:bg-primary hover:text-white text-sm"
+                    onClick={() => handleViewCode(project.githubUrl)}
+                  >
                     View Code
                   </Button>
                 </div>
@@ -148,10 +167,20 @@ const Projects = () => {
                   </div>
                   
                   <div className="flex gap-2">
-                    <Button size="sm" variant="outline" className="text-xs border-primary text-primary hover:bg-primary hover:text-white flex-1">
+                    <Button 
+                      size="sm" 
+                      variant="outline" 
+                      className="text-xs border-primary text-primary hover:bg-primary hover:text-white flex-1"
+                      onClick={() => handleLiveDemo(project.liveUrl)}
+                    >
                       Demo
                     </Button>
-                    <Button size="sm" variant="outline" className="text-xs border-primary text-primary hover:bg-primary hover:text-white flex-1">
+                    <Button 
+                      size="sm" 
+                      variant="outline" 
+                      className="text-xs border-primary text-primary hover:bg-primary hover:text-white flex-1"
+                      onClick={() => handleViewCode(project.githubUrl)}
+                    >
                       Code
                     </Button>
                   </div>

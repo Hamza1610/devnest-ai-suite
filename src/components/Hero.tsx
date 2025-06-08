@@ -3,6 +3,24 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 
 const Hero = () => {
+  // Function to scroll to projects section when "View My Work" is clicked
+  const handleViewWork = () => {
+    const projectsSection = document.querySelector('#projects');
+    projectsSection?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  // Function to download resume PDF when "Download Resume" button is clicked
+  const handleDownloadResume = () => {
+    // TODO: Replace with actual resume file URL
+    const resumeUrl = '/resume.pdf';
+    const link = document.createElement('a');
+    link.href = resumeUrl;
+    link.download = 'Alex_Chen_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden px-4">
       {/* Background animated elements */}
@@ -31,6 +49,7 @@ const Hero = () => {
           <Button 
             size="lg" 
             className="bg-primary hover:bg-primary/90 text-white px-6 md:px-8 py-2 md:py-3 text-base md:text-lg animate-pulse-glow w-full sm:w-auto"
+            onClick={handleViewWork}
           >
             View My Work
           </Button>
@@ -38,6 +57,7 @@ const Hero = () => {
             variant="outline" 
             size="lg" 
             className="border-primary text-primary hover:bg-primary hover:text-white px-6 md:px-8 py-2 md:py-3 text-base md:text-lg w-full sm:w-auto"
+            onClick={handleDownloadResume}
           >
             Download Resume
           </Button>

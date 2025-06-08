@@ -17,14 +17,17 @@ const Navbar = () => {
     { name: 'Blog', href: '/blog', isRoute: true },
   ];
 
+  // Function to navigate to AI workspace page when workspace button is clicked
   const handleWorkspaceClick = () => {
     navigate('/workspace');
   };
 
+  // Function to navigate to admin panel when admin button is clicked
   const handleAdminClick = () => {
     navigate('/admin');
   };
 
+  // Function to handle navigation between sections and routes
   const handleNavigation = (href: string, isRoute?: boolean) => {
     if (isRoute) {
       navigate(href);
@@ -46,11 +49,21 @@ const Navbar = () => {
     setIsMenuOpen(false);
   };
 
+  // Function to navigate to home page when logo is clicked
+  const handleLogoClick = () => {
+    navigate('/');
+  };
+
+  // Function to toggle mobile menu when hamburger button is clicked
+  const toggleMobileMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 glass-effect">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <div className="flex-shrink-0 cursor-pointer" onClick={() => navigate('/')}>
+          <div className="flex-shrink-0 cursor-pointer" onClick={handleLogoClick}>
             <h1 className="text-xl font-bold text-gradient">DevNest</h1>
           </div>
           
@@ -88,7 +101,7 @@ const Navbar = () => {
 
           <div className="md:hidden">
             <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              onClick={toggleMobileMenu}
               className="text-foreground hover:text-primary"
             >
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

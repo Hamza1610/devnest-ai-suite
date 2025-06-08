@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -29,6 +28,7 @@ const EmailGenerator = () => {
     { value: 'inquiry', label: 'Inquiry' }
   ];
 
+  // Function to generate AI-powered email content when generate button is clicked
   const handleGenerate = async () => {
     if (!formData.category || !formData.purpose) {
       toast({
@@ -41,7 +41,8 @@ const EmailGenerator = () => {
 
     setIsGenerating(true);
     
-    // Simulate AI generation
+    // TODO: Integrate with Gemini AI API to generate actual email content based on form data
+    // The API call should use formData to create contextual, professional email content
     setTimeout(() => {
       const sampleEmail = `Subject: ${formData.purpose}
 
@@ -66,6 +67,7 @@ Best regards,
     }, 2000);
   };
 
+  // Function to copy generated email to clipboard when copy button is clicked
   const handleCopy = () => {
     navigator.clipboard.writeText(generatedEmail);
     toast({
@@ -74,7 +76,9 @@ Best regards,
     });
   };
 
+  // Function to regenerate email with same parameters when refine button is clicked
   const handleRefine = () => {
+    // TODO: Add logic to refine/improve existing email content using AI
     handleGenerate();
   };
 
