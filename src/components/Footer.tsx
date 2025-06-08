@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const Footer = () => {
@@ -21,27 +20,27 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="glass-effect border-t border-primary/20 mt-20">
-      <div className="max-w-7xl mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+    <footer className="glass-effect border-t border-primary/20 mt-12 md:mt-20">
+      <div className="max-w-7xl mx-auto px-4 py-8 md:py-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-8">
           {/* Brand Section */}
           <div className="col-span-1 md:col-span-2">
-            <h3 className="text-2xl font-bold text-gradient mb-4">DevNest</h3>
-            <p className="text-muted-foreground mb-6 max-w-md">
+            <h3 className="text-xl md:text-2xl font-bold text-gradient mb-4">DevNest</h3>
+            <p className="text-sm md:text-base text-muted-foreground mb-6 max-w-md">
               Full Stack Developer passionate about creating innovative web applications 
               and exploring the latest in AI technology. Always learning, always building.
             </p>
-            <div className="flex gap-4">
+            <div className="flex gap-3 md:gap-4">
               {socialLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 glass-effect rounded-full flex items-center justify-center hover:glow-effect transition-all duration-300"
+                  className="w-8 h-8 md:w-10 md:h-10 glass-effect rounded-full flex items-center justify-center hover:glow-effect transition-all duration-300"
                   title={link.name}
                 >
-                  <span className="text-lg">{link.icon}</span>
+                  <span className="text-base md:text-lg">{link.icon}</span>
                 </a>
               ))}
             </div>
@@ -49,13 +48,13 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold text-primary mb-4">Quick Links</h4>
+            <h4 className="text-base md:text-lg font-semibold text-primary mb-4">Quick Links</h4>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-muted-foreground hover:text-primary transition-colors duration-200"
+                    className="text-sm md:text-base text-muted-foreground hover:text-primary transition-colors duration-200"
                   >
                     {link.name}
                   </a>
@@ -66,26 +65,26 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-semibold text-primary mb-4">Get In Touch</h4>
-            <div className="space-y-3 text-muted-foreground">
+            <h4 className="text-base md:text-lg font-semibold text-primary mb-4">Get In Touch</h4>
+            <div className="space-y-3 text-sm md:text-base text-muted-foreground">
               <div>
-                <p className="text-sm">Email</p>
+                <p className="text-xs md:text-sm">Email</p>
                 <a 
                   href="mailto:alex.chen@devnest.com"
-                  className="hover:text-primary transition-colors duration-200"
+                  className="hover:text-primary transition-colors duration-200 break-all"
                 >
                   alex.chen@devnest.com
                 </a>
               </div>
               <div>
-                <p className="text-sm">Location</p>
+                <p className="text-xs md:text-sm">Location</p>
                 <p>San Francisco, CA</p>
               </div>
               <div>
-                <p className="text-sm">Status</p>
+                <p className="text-xs md:text-sm">Status</p>
                 <span className="inline-flex items-center gap-2">
                   <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-                  Available for projects
+                  <span className="text-xs md:text-sm">Available for projects</span>
                 </span>
               </div>
             </div>
@@ -93,12 +92,12 @@ const Footer = () => {
         </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-primary/20 pt-8 mt-8">
+        <div className="border-t border-primary/20 pt-6 md:pt-8 mt-6 md:mt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-muted-foreground text-sm">
+            <p className="text-xs md:text-sm text-muted-foreground text-center md:text-left">
               © {currentYear} DevNest. Built with ❤️ using React, Next.js, and Tailwind CSS.
             </p>
-            <div className="flex gap-6 text-sm text-muted-foreground">
+            <div className="flex flex-wrap justify-center gap-4 md:gap-6 text-xs md:text-sm text-muted-foreground">
               <a href="#" className="hover:text-primary transition-colors duration-200">
                 Privacy Policy
               </a>

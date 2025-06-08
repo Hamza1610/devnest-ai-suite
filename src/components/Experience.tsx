@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -73,53 +72,54 @@ const Experience = () => {
   };
 
   return (
-    <section id="experience" className="py-20 px-4">
+    <section id="experience" className="py-12 md:py-20 px-4">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6">
             Work <span className="text-gradient">Experience</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
             My professional journey through various roles and projects, 
             building expertise in full-stack development and team collaboration.
           </p>
         </div>
 
-        <div className="space-y-8">
+        <div className="space-y-6 md:space-y-8">
           {experiences.map((exp, index) => (
             <Card key={index} className="glass-effect border-primary/20 group hover:glow-effect transition-all duration-300">
-              <CardHeader>
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                  <div>
-                    <CardTitle className="text-xl text-primary mb-2">{exp.role}</CardTitle>
-                    <div className="flex flex-col md:flex-row md:items-center gap-2 text-muted-foreground">
-                      <span className="font-semibold">{exp.company}</span>
-                      <span className="hidden md:block">•</span>
-                      <span>{exp.location}</span>
+              <CardHeader className="p-4 md:p-6">
+                <div className="flex flex-col gap-4">
+                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+                    <div className="flex-1">
+                      <CardTitle className="text-lg md:text-xl text-primary mb-2">{exp.role}</CardTitle>
+                      <div className="flex flex-col gap-1 text-sm md:text-base text-muted-foreground">
+                        <span className="font-semibold">{exp.company}</span>
+                        <span>{exp.location}</span>
+                      </div>
                     </div>
-                  </div>
-                  <div className="flex flex-col md:items-end gap-2">
-                    <Badge className={`${getTypeColor(exp.type)} border-none`}>
-                      {exp.type}
-                    </Badge>
-                    <span className="text-sm text-muted-foreground">{exp.duration}</span>
+                    <div className="flex flex-col sm:items-end gap-2 sm:text-right">
+                      <Badge className={`${getTypeColor(exp.type)} border-none text-xs md:text-sm self-start sm:self-end`}>
+                        {exp.type}
+                      </Badge>
+                      <span className="text-xs md:text-sm text-muted-foreground">{exp.duration}</span>
+                    </div>
                   </div>
                 </div>
               </CardHeader>
               
-              <CardContent className="space-y-6">
+              <CardContent className="space-y-6 p-4 md:p-6 pt-0">
                 <ul className="space-y-2">
                   {exp.description.map((item, i) => (
-                    <li key={i} className="flex items-start gap-3 text-muted-foreground">
+                    <li key={i} className="flex items-start gap-3 text-sm md:text-base text-muted-foreground">
                       <span className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span>
-                      <span>{item}</span>
+                      <span className="leading-relaxed">{item}</span>
                     </li>
                   ))}
                 </ul>
                 
                 <div>
-                  <h4 className="text-sm font-semibold text-primary mb-3">Technologies Used:</h4>
-                  <div className="flex flex-wrap gap-2">
+                  <h4 className="text-xs md:text-sm font-semibold text-primary mb-3">Technologies Used:</h4>
+                  <div className="flex flex-wrap gap-1 md:gap-2">
                     {exp.technologies.map((tech) => (
                       <Badge key={tech} variant="outline" className="border-primary/30 text-primary text-xs">
                         {tech}
@@ -133,11 +133,11 @@ const Experience = () => {
         </div>
 
         {/* Download Resume CTA */}
-        <div className="text-center mt-16">
-          <div className="glass-effect p-8 rounded-lg inline-block">
-            <h3 className="text-xl font-bold text-primary mb-4">Want to know more?</h3>
-            <p className="text-muted-foreground mb-6">Download my full resume for detailed information about my experience and projects.</p>
-            <button className="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200">
+        <div className="text-center mt-12 md:mt-16">
+          <div className="glass-effect p-6 md:p-8 rounded-lg inline-block max-w-md mx-auto">
+            <h3 className="text-lg md:text-xl font-bold text-primary mb-4">Want to know more?</h3>
+            <p className="text-sm md:text-base text-muted-foreground mb-6">Download my full resume for detailed information about my experience and projects.</p>
+            <button className="bg-primary hover:bg-primary/90 text-white px-4 md:px-6 py-2 md:py-3 rounded-lg font-medium transition-colors duration-200 text-sm md:text-base">
               Download Resume (PDF)
             </button>
           </div>

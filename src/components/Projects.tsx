@@ -71,47 +71,47 @@ const Projects = () => {
   const otherProjects = projects.filter(project => !project.featured);
 
   return (
-    <section id="projects" className="py-20 px-4">
+    <section id="projects" className="py-12 md:py-20 px-4">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6">
             Featured <span className="text-gradient">Projects</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
             A selection of projects that showcase my skills in full-stack development, 
             AI integration, and modern web technologies.
           </p>
         </div>
 
         {/* Featured Projects */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 md:gap-8 mb-12 md:mb-16">
           {featuredProjects.map((project) => (
             <Card key={project.id} className="glass-effect border-primary/20 group hover:glow-effect transition-all duration-300">
               <div className="aspect-video bg-gradient-to-br from-primary/20 to-blue-400/20 rounded-t-lg flex items-center justify-center">
-                <div className="text-6xl opacity-50">🚀</div>
+                <div className="text-4xl md:text-6xl opacity-50">🚀</div>
               </div>
-              <CardHeader>
-                <div className="flex items-center justify-between">
-                  <CardTitle className="text-xl text-primary">{project.title}</CardTitle>
-                  <Badge variant="secondary" className="bg-primary/20 text-primary">Featured</Badge>
+              <CardHeader className="p-4 md:p-6">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                  <CardTitle className="text-lg md:text-xl text-primary">{project.title}</CardTitle>
+                  <Badge variant="secondary" className="bg-primary/20 text-primary self-start sm:self-center">Featured</Badge>
                 </div>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <p className="text-muted-foreground leading-relaxed">{project.description}</p>
+              <CardContent className="space-y-4 p-4 md:p-6 pt-0">
+                <p className="text-sm md:text-base text-muted-foreground leading-relaxed">{project.description}</p>
                 
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1 md:gap-2">
                   {project.technologies.map((tech) => (
-                    <Badge key={tech} variant="outline" className="border-primary/30 text-primary">
+                    <Badge key={tech} variant="outline" className="border-primary/30 text-primary text-xs">
                       {tech}
                     </Badge>
                   ))}
                 </div>
                 
-                <div className="flex gap-3 pt-2">
-                  <Button size="sm" className="bg-primary hover:bg-primary/90">
+                <div className="flex flex-col sm:flex-row gap-2 md:gap-3 pt-2">
+                  <Button size="sm" className="bg-primary hover:bg-primary/90 text-sm">
                     Live Demo
                   </Button>
-                  <Button size="sm" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white">
+                  <Button size="sm" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white text-sm">
                     View Code
                   </Button>
                 </div>
@@ -122,17 +122,17 @@ const Projects = () => {
 
         {/* Other Projects Grid */}
         <div>
-          <h3 className="text-2xl font-bold mb-8 text-center">
+          <h3 className="text-xl md:text-2xl font-bold mb-6 md:mb-8 text-center">
             Other <span className="text-gradient">Projects</span>
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {otherProjects.map((project) => (
               <Card key={project.id} className="glass-effect border-primary/20 group hover:scale-105 transition-all duration-300">
-                <CardHeader>
-                  <CardTitle className="text-lg text-primary">{project.title}</CardTitle>
+                <CardHeader className="p-4 md:p-6">
+                  <CardTitle className="text-base md:text-lg text-primary">{project.title}</CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                  <p className="text-sm text-muted-foreground">{project.description}</p>
+                <CardContent className="space-y-4 p-4 md:p-6 pt-0">
+                  <p className="text-xs md:text-sm text-muted-foreground">{project.description}</p>
                   
                   <div className="flex flex-wrap gap-1">
                     {project.technologies.slice(0, 3).map((tech) => (
@@ -148,10 +148,10 @@ const Projects = () => {
                   </div>
                   
                   <div className="flex gap-2">
-                    <Button size="sm" variant="outline" className="text-xs border-primary text-primary hover:bg-primary hover:text-white">
+                    <Button size="sm" variant="outline" className="text-xs border-primary text-primary hover:bg-primary hover:text-white flex-1">
                       Demo
                     </Button>
-                    <Button size="sm" variant="outline" className="text-xs border-primary text-primary hover:bg-primary hover:text-white">
+                    <Button size="sm" variant="outline" className="text-xs border-primary text-primary hover:bg-primary hover:text-white flex-1">
                       Code
                     </Button>
                   </div>
